@@ -8,7 +8,7 @@ $email = $_SESSION['email'];
 $pass = $_POST['pass'];
 $hashpass = md5($pass);
 
-$sql = "INSERT INTO student VALUES('$user','$name','$email','$hashpass')";
+$sql = "INSERT INTO student VALUES('$user','$name','$hashpass','$email')";
 $result = $conn->query($sql);
 
 $sql2 = "DELETE FROM register_token WHERE email = '$email'";
@@ -17,7 +17,7 @@ $result2 = $conn->query($sql2);
 session_unset();
 session_destroy();
 
-
-header("Location:../../index.html");
+header("Location: ../../index.php");
 
 ?>
+

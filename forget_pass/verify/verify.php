@@ -17,7 +17,7 @@ function send_link($email){
   $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
   $mail->SMTPAuth = true;
   $mail->Username = 'iit2021158@iiita.ac.in';
-  $mail->Password = 'ansh1234';
+  $mail->Password = 'ansh@1234';
   $mail->setFrom('iit2021158@iiita.ac.in', 'Ansh Agrawal');
   $mail->addReplyTo('iit2021158@iiita.ac.in', 'Ansh Agrawal');
   $mail->addAddress($email);
@@ -34,11 +34,11 @@ function send_link($email){
    $verification_token = $verification_token . $addKey;
 
   $email_template = "
-  <h5>Verify you email to register for Portfolio with the link given below</h5>
+  <h5>This is your reset password link.</h5>
   <br>
-  <a href='http://localhost/register/signup/signup.php?token=$verification_token&email=$email'>Verify Link</a>
+  <a href='http://localhost/forget_pass/reset/reset.php?token=$verification_token&email=$email'>Verify Link</a>
   <h5>DO NOT SHARE THIS LINK WITH ANYONE</h5>
-";
+  ";
 
   $mail->Body = $email_template;
 
@@ -60,8 +60,8 @@ function send_link($email){
 $check_student = "SELECT * FROM student WHERE student_id = '$enroll' ";
 $result = $conn->query($check_student);
 
-if($result->num_rows > 0){
-  echo "User already exists!!";
+if($result->num_rows == 0){
+  echo "User Doesn't exists!!";
 }
 else{
   send_link($email);

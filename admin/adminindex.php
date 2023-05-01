@@ -5,7 +5,6 @@ if(!isset($_SESSION['loggedIn']) && !$_SESSION['loggedIn']){
 }
 ?>
 <?php
-session_start();
 include('../authentication/connection.php');
 ?>
 <!DOCTYPE html>
@@ -74,8 +73,23 @@ include('../authentication/connection.php');
                             </span>
                             <span class="title">Insert Route</span>
                         </a>
+                    </li> 
+                    <li>
+                        <a href="addstudent/addstudent.php">
+                            <span class="icon">
+                                <ion-icon name="school"></ion-icon>
+                            </span>
+                            <span class="title">Edit Students</span>
+                        </a>
                     </li>                   
-
+                    <li>
+                        <a href="addfaculty/addfaculty.php">
+                            <span class="icon">
+                                <ion-icon name="book"></ion-icon>
+                            </span>
+                            <span class="title">Edit Faculty</span>
+                        </a>
+                    </li>  
                     <li>
                         <a href="../logout/logout.php">
                             <span class="icon">

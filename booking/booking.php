@@ -24,6 +24,7 @@ $role= $_SESSION['role'];
         <link rel="stylesheet" href="booking.css">
        <!-- =========== Scripts =========  -->
         
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
         <!-- ====== ionicons ======= -->
         <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
@@ -123,9 +124,9 @@ $role= $_SESSION['role'];
                                 </tr>
                             </thead>
                         <tbody>
-<?php
-session_start();
-                            $sql = "SELECT bus.bus_id,route.route_id, route.departure_src,route.departure_dst,route.source, route.destination, bus.seats FROM bus INNER JOIN route ON bus.route_id = route.route_id WHERE bus.role='$role'";
+                        <?php
+                        session_start();
+                        $sql = "SELECT bus.bus_id,route.route_id, route.departure_src,route.departure_dst,route.source, route.destination, bus.seats FROM bus INNER JOIN route ON bus.route_id = route.route_id WHERE bus.role='$role'";
                             $result = $conn->query($sql);
                             if ($result->num_rows > 0) {
                             // Output data of each row
@@ -138,24 +139,59 @@ session_start();
                                     echo "<td>" . $row["destination"] . "</td>";
                                     echo "<td>" . $row["seats"] . "</td>";
                                     echo "<td>
-                                    <form action='booking_ticket.php' method='POST'>
-                                    <input type='hidden' name='bus_id' value='" . $row["bus_id"] . "'>
+                                    <input type='hidden' name='bus_id' id='bus_id' value='" . $row["bus_id"] . "'>
                                     <input type='hidden' name='user' value='" . $row["seats"] . "'>
-                                    <input type='hidden' name='route_id' value='" . $row["route_id"] . "'>
-                                    <button type='submit'>Book</button>
-                                    </form>                                    
+                                    <input type='hidden' name='route_id' id='route_id' value='" . $row["route_id"] . "'>
+                                    <input type='submit' value='Book' class='button' onclick='validateForm()' />
                                     </td>";
                                     echo "</tr>";
                                 }
                             } else {
                                 echo "0 results";
                             }
-                            ?>
+                        ?>
                         </tbody>
                     </table>
+                <p style="color:red" id="test" ></p>
                 </div>
             </div>
         </div>
-<script src="booking.js"></script>
+<script>
+    function validateForm() {
+        let bus = document.getElementById('bus_id').value;
+        let route = document.getElementById('route_id').value;
+   
+        sendData(bus,route);
+        return true;
+    }  
+
+    function sendData(bus, route) {
+        $.ajax({
+            type: "POST",
+            url: "booking_ticket.php",
+            data: { 
+                bus_id:bus,
+                route_id:route
+            },
+            success: function(response) {
+                response=response.trim();
+                console.log(response);
+                if(response === 'No'){
+                    $('#test').html('You can book only one seat in a day') 
+                }
+                else if(response=='success'){
+                    window.location.href = '../view/view.php';
+                }
+                else if(response=='no_seats'){
+                    $('#test').html('No seats available');
+                }
+                else{
+                    $('#test').html('Error from server side,please try after some time');
+                }
+            }
+        });
+    }
+</script>
+        <script src="booking.js"></script>
    </body>
 </html>

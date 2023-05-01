@@ -3,7 +3,9 @@
     include('connection.php'); 
     session_start();
     $username = $_POST['user'];  
-    $password = $_POST['pass'];  
+    $pass= $_POST['pass']; 
+    if($username!='AdminAnsh')$password =md5($pass);
+    else $password=$pass; 
     $role = $_POST['role'];  
         //to prevent from mysqli injection  
         $username = stripcslashes($username);  
@@ -22,36 +24,35 @@
         $row1 = mysqli_fetch_array($result1, MYSQLI_ASSOC);  
         $count1 = mysqli_num_rows($result1);  
   
-        if($count == 1 && $role=="student"){     
+        if($count == 1 && $role=='student'){     
             $_SESSION['loggedIn']=true;
             $_SESSION['usernow']=$username;
             $_SESSION['passnow']=$password;
             $_SESSION['displayname']=$row['name'];
             $_SESSION['role']='student';
-            header("location:../dash/index.php");  
+            echo 'student'; 
             exit(); 
         }  
        
-        if($count1 == 1 && $role=="faculty"){     
+        if($count1 == 1 && $role=='faculty'){     
             $_SESSION['loggedIn']=true;
             $_SESSION['usernow']=$username;
             $_SESSION['passnow']=$password;
             $_SESSION['displayname']=$row1['name'];
             $_SESSION['role']='faculty';
-            header("location:../dash/index.php");  
+            echo 'faculty';
             exit(); 
         }
-        else if($username="AdminAnsh" AND $password=="ansh@2003"){
+        else if($username=="AdminAnsh" AND $password=="ansh@2003"){
             $_SESSION['usernow']=$username;
             $_SESSION['passnow']=$password;
             $_SESSION['displayname']='Ansh';
             $_SESSION['loggedIn']=true;
-            header("location:../admin/adminindex.php");
+            echo 'admin';
             exit();
         }
         else{
-            $_SESSION['error'] = "Invalid username or password";
-            header("location:../index.html"); 
+            echo 'Invalid Username or Password';
             exit(); 
         }
 ?>

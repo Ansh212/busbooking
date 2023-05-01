@@ -17,7 +17,7 @@ function send_link($email){
   $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
   $mail->SMTPAuth = true;
   $mail->Username = 'iit2021158@iiita.ac.in';
-  $mail->Password = 'ansh1234';
+  $mail->Password = 'ansh@1234';
   $mail->setFrom('iit2021158@iiita.ac.in', 'Ansh Agrawal');
   $mail->addReplyTo('iit2021158@iiita.ac.in', 'Ansh Agrawal');
   $mail->addAddress($email);
@@ -34,7 +34,7 @@ function send_link($email){
    $verification_token = $verification_token . $addKey;
 
   $email_template = "
-  <h5>Verify you email to register for Portfolio with the link given below</h5>
+  <h5>Verify you email to register for Using Bus Services with the link given below</h5>
   <br>
   <a href='http://localhost/register/signup/signup.php?token=$verification_token&email=$email'>Verify Link</a>
   <h5>DO NOT SHARE THIS LINK WITH ANYONE</h5>

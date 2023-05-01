@@ -1,6 +1,10 @@
 function validateForm() {
   let name = document.forms['signup']['name'].value;
   let pass = document.forms['signup']['pass'].value;
+  let nerror =  document.getElementById('name-error');
+  let perror =  document.getElementById('password-error');
+  let cerror =  document.getElementById('confirm-error');
+
   let confirmpass = document.forms['signup']['repass'].value;
 
 
@@ -11,6 +15,7 @@ function validateForm() {
   
  
   if(name.length===0){
+    nerror.removeAttribute('hidden');
     document.getElementById('name-error').innerHTML = 'Enter your name.';
     return false;
   }
@@ -25,11 +30,13 @@ function validateForm() {
       return true;
     }
     else{
+      cerror.removeAttribute('hidden');
       document.getElementById('confirm-error').innerHTML = 'Passwords do not match.';
       return false;
     }
   }
   else{
+    perror.removeAttribute('hidden');
     document.getElementById('password-error').innerHTML = 'Password not strong enough';
     return false;
   }

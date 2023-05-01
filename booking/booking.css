@@ -107,7 +107,7 @@ h1{
   text-align: start;
   white-space: nowrap;
 }
-button {
+.button {
 	border-radius: 20px;
 	border-color:#FFFFFF;
 	background-color: #1e9afe;
@@ -120,15 +120,15 @@ button {
 	transition: transform 80ms ease-in;
 }
 
-button:active {
+.button:active {
 	transform: scale(0.95);
 }
 
-button:focus {
+.button:focus {
 	outline: none;
 }
 
-button.ghost {
+.button.ghost {
 	background-color:#1e9afe;
 	border-color: #FFFFFF;
 }

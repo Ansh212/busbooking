@@ -110,13 +110,13 @@ $current_date = date("Y-m-d");
     <div class="cardBox">
         <div class="card">
             <?php
-             $ticket_id = $_SESSION['ticket_id'];
+             
            
 if($role=='student'){
-$sql = "SELECT student_ticket.date,student_ticket.bus_id, student_ticket.date, route.departure_src, route.departure_dst, route.source, route.destination FROM student_ticket INNER JOIN route ON student_ticket.route_id = route.route_id";
+$sql = "SELECT student_ticket.date,student_ticket.bus_id, student_ticket.date, student_ticket.ticket_id,route.departure_src, route.departure_dst, route.source, route.destination FROM student_ticket INNER JOIN route ON student_ticket.route_id = route.route_id";
 }
 else if($role=='faculty'){
-$sql = "SELECT faculty_ticket.date,faculty_ticket.bus_id, faculty_ticket.date, route.departure_src, route.departure_dst, route.source, route.destination FROM faculty_ticket INNER JOIN route ON faculty_ticket.route_id = route.route_id";
+$sql = "SELECT faculty_ticket.date,faculty_ticket.bus_id, faculty_ticket.date, faculty_ticket.ticket_id,route.departure_src, route.departure_dst, route.source, route.destination FROM faculty_ticket INNER JOIN route ON faculty_ticket.route_id = route.route_id";
 }
             $result = $conn->query($sql);
 
@@ -127,7 +127,7 @@ $sql = "SELECT faculty_ticket.date,faculty_ticket.bus_id, faculty_ticket.date, r
                 $departure_dst = $row["departure_dst"];
                 $source = $row["source"];
                 $destination = $row["destination"];
-
+                $ticket_id = $row["ticket_id"];
                 echo '<div class="numbers">Ticket Information</div>';
                 echo '<div class="cardName"><b>Ticket ID:</b> '.$ticket_id.'</div>';
                 echo '<div class="cardName"><b>Bus ID:</b> '.$bus_id.'</div>';

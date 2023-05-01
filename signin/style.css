@@ -34,7 +34,7 @@ p {
 	font-weight: 100;
 	line-height: 20px;
 	letter-spacing: 0.5px;
-	margin: 20px 0 30px;
+	margin: 12px 0 12px;
 }
 
 span {
@@ -48,7 +48,7 @@ a {
 	margin: 15px 0;
 }
 
-button {
+.button {
 	border-radius: 20px;
 	border-color:#FFFFFF;
 	background-color: #1e9afe;
@@ -61,37 +61,47 @@ button {
 	transition: transform 80ms ease-in;
 }
 
-button:active {
+.button:active {
 	transform: scale(0.95);
 }
 
-button:focus {
+.button:focus {
 	outline: none;
 }
 
-button.ghost {
-	background-color:#1e9afe;
-	border-color: #FFFFFF;
-}
 
-form {
+
+.f1 {
 	background-color: #FFFFFF;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
-	padding: 0 50px;
+	padding: 0px 95px;
 	height: 100%;
 	text-align: center;
 }
 
 input {
-	background-color: #eee;
-	border: none;
-	padding: 12px 15px;
-	margin: 8px 0;
+	background-color: #ffffff;
+	border:solid #dee2e6;
+	border-width:1px;
+	padding: 15px;
+	margin: 0px;
 	width: 100%;
 }
+input[type=text]:focus {
+	background-color:none;
+	outline:none;
+	border-color:rgb(117, 196, 254,0.5);
+	border-width:4px;
+}
+input[type=password]:focus {
+	outline:none;
+	border-color:rgb(117, 196, 254,0.5);
+	border-width:4px;
+}
+
 table {
 			width: 100%;
 			border-collapse: collapse;

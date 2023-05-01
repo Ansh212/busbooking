@@ -320,14 +320,7 @@ button.ghost {
   color: var(--black2);
 }
 
-.cardBox .card:hover {
-  background: var(--blue);
-}
-.cardBox .card:hover .numbers,
-.cardBox .card:hover .cardName,
-.cardBox .card:hover .iconBx {
-  color: var(--white);
-}
+
 
 /* ================== Order Details List ============== */
 .details {

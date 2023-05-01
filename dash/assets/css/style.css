@@ -50,6 +50,11 @@ body {
   width: 100%;
 }
 
+h1{
+  color: #1e9afe;
+  align-items:center;
+}
+
 .navigation ul li {
   position: relative;
   width: 100%;
@@ -102,7 +107,69 @@ body {
   text-align: start;
   white-space: nowrap;
 }
+button {
+	border-radius: 20px;
+	border-color:#FFFFFF;
+	background-color: #1e9afe;
+	color: #FFFFFF;
+	font-size: 12px;
+	font-weight: bold;
+	padding: 12px 45px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	transition: transform 80ms ease-in;
+}
 
+button:active {
+	transform: scale(0.95);
+}
+
+button:focus {
+	outline: none;
+}
+
+button.ghost {
+	background-color:#1e9afe;
+	border-color: #FFFFFF;
+}
+
+.content-table {
+    border-collapse: collapse;
+    font-size: 0.9em;
+    min-width: 400px;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.content-table thead tr {
+    background-color: #1e9afe;
+    color: #ffffff;
+    text-align: left;
+    font-weight: bold;
+}
+
+.content-table th,
+.content-table td {
+    padding: 12px 15px;
+}
+
+.content-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.content-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.content-table tbody tr:last-of-type {
+    border-bottom: 2px solid #1e9afe;
+}
+
+.content-table tbody tr.active-row {
+    font-weight: bold;
+    color: #1e9afe;
+}
 /* --------- curve outside ---------- */
 .navigation ul li:hover a::before,
 .navigation ul li.hovered a::before {
@@ -266,16 +333,14 @@ body {
   position: relative;
   width: 100%;
   padding: 20px;
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  grid-gap: 30px;
-  /* margin-top: 10px; */
+  display: block;
+   /* margin-top: 10px; */
 }
 
 .details .recentOrders {
   position: relative;
-  display: grid;
-  height: 300px;
+  height: fit-content;
+  width: fit-content;
   background: var(--white);
   padding: 20px;
   box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
@@ -300,37 +365,7 @@ body {
   border-radius: 6px;
 }
 
-.details table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 10px;
-}
-.details table thead td {
-  font-weight: 600;
-}
-.details .recentOrders table tr {
-  color: var(--black1);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-}
-.details .recentOrders table tr:last-child {
-  border-bottom: none;
-}
-.details .recentOrders table tbody tr:hover {
-  background: var(--blue);
-  color: var(--white);
-}
-.details .recentOrders table tr td {
-  padding: 10px;
-}
-.details .recentOrders table tr td:last-child {
-  text-align: end;
-}
-.details .recentOrders table tr td:nth-child(2) {
-  text-align: end;
-}
-.details .recentOrders table tr td:nth-child(3) {
-  text-align: center;
-}
+
 .status.delivered {
   padding: 2px 4px;
   background: #8de02c;
@@ -419,7 +454,6 @@ body {
   }
   .main {
     width: 100%;
-    left: 0;
   }
   .main.active {
     left: 300px;

@@ -5,7 +5,6 @@ if(!isset($_SESSION['loggedIn']) && !$_SESSION['loggedIn']){
 }
 ?>
 <?php
-session_start();
 include('../../authentication/connection.php');
 ?>
 
@@ -17,11 +16,12 @@ include('../../authentication/connection.php');
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Admin</title>
 
+        
         <!-- ======= Styles ====== -->
-        <link rel="stylesheet" href="../../booking/booking.css">
+        <link rel="stylesheet" href="../assets/css/style.css">
 
        <!-- =========== Scripts =========  -->
-        <script src="../../booking/booking.js"></script>
+        <script src="../assets/js/main.js"></script>
 
         <!-- ====== ionicons ======= -->
         <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
@@ -68,7 +68,22 @@ include('../../authentication/connection.php');
                             <span class="title">Edit Drivers</span>
                         </a>
                     </li>                
-
+                    <li>
+                        <a href="../addstudent/addstudent.php">
+                            <span class="icon">
+                                <ion-icon name="school"></ion-icon>
+                            </span>
+                            <span class="title">Edit Students</span>
+                        </a>
+                    </li>  
+                    <li>
+                        <a href="../addfaculty/addfaculty.php">
+                            <span class="icon">
+                                <ion-icon name="book"></ion-icon>
+                            </span>
+                            <span class="title">Edit Faculty</span>
+                        </a>
+                    </li>
                     <li>
                         <a href="../../logout/logout.php">
                             <span class="icon">
