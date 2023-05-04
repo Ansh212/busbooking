@@ -132,7 +132,31 @@ button.ghost {
 	background-color:#1e9afe;
 	border-color: #FFFFFF;
 }
+.btton {
+	border-radius: 20px;
+	border-color:#FFFFFF;
+	background-color: #1e9afe;
+	color: #FFFFFF;
+	font-size: 12px;
+	font-weight: bold;
+	padding: 12px 45px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	transition: transform 80ms ease-in;
+}
 
+.btton:active {
+	transform: scale(0.95);
+}
+
+.btton:focus {
+	outline: none;
+}
+
+.btton.ghost {
+	background-color:#1e9afe;
+	border-color: #FFFFFF;
+}
 .content-table {
     border-collapse: collapse;
     font-size: 0.9em;
@@ -327,7 +351,14 @@ button.ghost {
 .cardBox .card:hover .iconBx {
   color: var(--white);
 }
-
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px; /* Adjust the gap as needed */
+}
+.form-row form + form {
+  margin-left: 1px; /* Adjust the margin to control the space between forms */
+}
 /* ================== Order Details List ============== */
 .details {
   position: relative;

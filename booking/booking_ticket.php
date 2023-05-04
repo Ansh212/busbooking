@@ -9,9 +9,14 @@ $booked_seats = 1;
 $route_id = $_POST['route_id'];
 $user = $_SESSION['usernow'];
 $current_date = date("Y-m-d"); 
-
+$status = $_POST['status'];
 // Begin a transaction
 $conn->begin_transaction();
+
+if($status == 'false'){
+   echo 'disable';
+   exit();
+}
 
 // Check if the user has already booked a ticket for the same date
 if($role == 'student') {
@@ -25,7 +30,7 @@ $check_result = $conn->query($check_sql);
 if ($check_result->num_rows > 0) {
     // User already booked a ticket for the same date
     echo 'No';
-} 
+}
 else {
     // Select the number of available seats and lock the row for update
     $sql1 = "SELECT seats FROM bus WHERE bus_id = $bus_id FOR UPDATE";

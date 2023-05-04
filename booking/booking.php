@@ -126,7 +126,7 @@ $role= $_SESSION['role'];
                         <tbody>
                         <?php
                         session_start();
-                        $sql = "SELECT bus.bus_id,route.route_id, route.departure_src,route.departure_dst,route.source, route.destination, bus.seats FROM bus INNER JOIN route ON bus.route_id = route.route_id WHERE bus.role='$role'";
+                        $sql = "SELECT bus.status,bus.bus_id,route.route_id, route.departure_src,route.departure_dst,route.source, route.destination, bus.seats FROM bus INNER JOIN route ON bus.route_id = route.route_id WHERE bus.role='$role'";
                             $result = $conn->query($sql);
                             if ($result->num_rows > 0) {
                             // Output data of each row
@@ -142,6 +142,7 @@ $role= $_SESSION['role'];
                                     <input type='hidden' name='bus_id' id='bus_id' value='" . $row["bus_id"] . "'>
                                     <input type='hidden' name='user' value='" . $row["seats"] . "'>
                                     <input type='hidden' name='route_id' id='route_id' value='" . $row["route_id"] . "'>
+                                    <input type='hidden' name='status' id='status' value='" . $row["status"] . "'>
                                     <input type='submit' value='Book' class='button' onclick='validateForm()' />
                                     </td>";
                                     echo "</tr>";
@@ -160,18 +161,19 @@ $role= $_SESSION['role'];
     function validateForm() {
         let bus = document.getElementById('bus_id').value;
         let route = document.getElementById('route_id').value;
-   
-        sendData(bus,route);
+        let status = document.getElementById('status').value; 
+        sendData(bus,route,status);
         return true;
     }  
 
-    function sendData(bus, route) {
+    function sendData(bus, route,status) {
         $.ajax({
             type: "POST",
             url: "booking_ticket.php",
             data: { 
                 bus_id:bus,
-                route_id:route
+                route_id:route,
+                status:status
             },
             success: function(response) {
                 response=response.trim();
@@ -184,6 +186,9 @@ $role= $_SESSION['role'];
                 }
                 else if(response=='no_seats'){
                     $('#test').html('No seats available');
+                }
+                else if(response=='disable'){
+                    $('#test').html('Bus is not available today, please try tommorow');
                 }
                 else{
                     $('#test').html('Error from server side,please try after some time');

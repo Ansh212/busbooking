@@ -18,6 +18,7 @@ include('../../authentication/connection.php');
         <title>Admin Delete</title>
         <!-- ======= Styles ====== -->
         <link rel="stylesheet" href="../assets/css/style.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
        <!-- =========== Scripts =========  -->
         <script src="../assets/js/main.js"></script>
@@ -148,9 +149,8 @@ include('../../authentication/connection.php');
                             </thead>
                             <tbody>
                                 <tr>
-                                <form action="adddriver_add.php"  method="POST">
                                     <td>
-                                        <input type="number" id="driver_id" name="driver_id" placeholder="Enter Driver ID" />
+                                        <input type="number" id="did" name="did" placeholder="Enter Driver ID" />
                                     </td>
                                     <td>
                                         <input type="text" id="name" name="name" placeholder="Enter Driver Name"/>
@@ -159,14 +159,53 @@ include('../../authentication/connection.php');
                                         <input type="number" id="phone" name="phone" placeholder="Enter Phone number"/>
                                     </td>
                                     <td> 
-                                        <button type='submit'>ADD</button>
+                                        <input type='submit' value='ADD' class='btton' onclick='validateForm()' /> 
                                     </td>
-                                </from>
                                 </tr>
                             </tbody>
-                        </table>
+                        </table><br>
+                <p style="color:red" id="test" ></p>
+
                 </div>
             </div>
         </div>
+<script>
+    function validateForm() {
+        let did = document.getElementById('did').value;
+        let name = document.getElementById('name').value; 
+        let phone = document.getElementById('phone').value;
+        sendData(did,name,phone);
+        return true;
+    }  
+
+    function sendData(did,name,phone) {
+        $.ajax({
+            type: "POST",
+            url: "adddriver_add.php",
+            data: { 
+                driver_id:did,
+                name:name,
+                phone:phone
+            },
+            success: function(response) {
+                response=response.trim();
+                console.log(response);
+                if(response === 'driver_id'){
+                    $('#test').html('Driver ID is already present provide another ID'); 
+                }
+                else if(response === 'phone'){
+                    $('#test').html('Phone No. is already present, please give another number'); 
+                }
+                else if(response=='success'){
+                    window.location.href = 'adddriver.php';
+                }
+                else{
+                    $('#test').html('Error from server side,please try after some time');
+                }
+            }
+        });
+    }
+</script>
+
    </body>
 </html>

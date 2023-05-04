@@ -19,6 +19,7 @@ include('../../authentication/connection.php');
         
         <!-- ======= Styles ====== -->
         <link rel="stylesheet" href="../assets/css/style.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
        <!-- =========== Scripts =========  -->
         <script src="../assets/js/main.js"></script>
@@ -158,32 +159,71 @@ include('../../authentication/connection.php');
                             </thead>
                             <tbody>
                                 <tr>
-                                <form action="addroute_add.php"  method="POST">
                                     <td>
-                                        <input type="number" id="route_id" name="route_id" placeholder="Enter Route ID" />
+                                        <input type="number" id="rid" name="rid" placeholder="Enter Route ID" />
                                     </td>
                                     <td>
-                                        <input type="text" id="source" name="source" placeholder="Enter Starting Point"/>
+                                        <input type="text" id="src" name="src" placeholder="Enter Starting Point"/>
                                     </td>
                                     <td>
-                                        <input type="text" id="destination" name="destination" placeholder="Enter Destination Point"/>
+                                        <input type="text" id="dst" name="dst" placeholder="Enter Destination Point"/>
                                     </td>
                                     <td>
-                                        <input type="time" id="departure_src" name="departure_src" placeholder="Enter Departure Time From Source"/>
+                                        <input type="time" id="dep_src" name="dep_src" placeholder="Enter Departure Time From Source"/>
                                     </td>
                                     <td>
-                                        <input type="time"  id="departure_dst" name="departure_dst" placeholder="Enter Departure Time From Destination"/>
+                                        <input type="time"  id="dep_dst" name="dep_dst" placeholder="Enter Departure Time From Destination"/>
                                     </td>
 
                                     <td> 
-                                         <button type='submit'>ADD</button>
+                                        <input type='submit' value='ADD' class='btton' onclick='validateForm()' /> 
                                     </td>
-                                </from>
                                 </tr>
                             </tbody>
-                        </table>
+                        </table><br>
+                <p style="color:red" id="test" ></p>
                 </div>
             </div>
         </div>
+<script>
+    function validateForm() {
+        let rid = document.getElementById('rid').value;
+        let src = document.getElementById('src').value; 
+        let dst = document.getElementById('dst').value;
+        let dep_src = document.getElementById('dep_src').value;
+        let dep_dst = document.getElementById('dep_dst').value;
+
+        sendData(rid,src,dst,dep_src,dep_dst);
+        return true;
+    }  
+
+    function sendData(rid,src,dst,dep_src,dep_dst) {
+        $.ajax({
+            type: "POST",
+            url: "addroute_add.php",
+            data: { 
+                route_id:rid,
+                source:src,
+                destination:dst,
+                departure_src:dep_src,
+                departure_dst:dep_dst 
+            },
+            success: function(response) {
+                response=response.trim();
+                console.log(response);
+                if(response === 'route_id'){
+                    $('#test').html('Route ID is already present provide another ID'); 
+                } 
+                else if(response=='success'){
+                    window.location.href = 'addroute.php';
+                }
+                else{
+                    $('#test').html('Error from server side,please try after some time');
+                }
+            }
+        });
+    }
+</script>
+
    </body>
 </html>
