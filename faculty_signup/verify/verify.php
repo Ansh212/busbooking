@@ -57,7 +57,7 @@ function send_link($email){
   }
 }
 
-$check_student = "SELECT * FROM faculty WHERE email='$email'";
+$check_student = "SELECT * FROM faculty WHERE faculty_id='$email'";
 $result = $conn->query($check_student);
 
 if($result->num_rows > 0){

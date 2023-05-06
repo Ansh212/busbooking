@@ -3,12 +3,11 @@ session_start();
 require('../../authentication/connection.php');
 
 $name = $_POST['name'];
-$user = $_POST['user'];
 $email = $_SESSION['email'];
 $pass = $_POST['pass'];
 $hashpass = md5($pass);
 
-$sql = "INSERT INTO faculty VALUES('$user','$name','$hashpass','$email')";
+$sql = "INSERT INTO faculty VALUES('$email','$name','$hashpass')";
 $result = $conn->query($sql);
 
 $sql2 = "DELETE FROM register_token WHERE email = '$email'";

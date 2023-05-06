@@ -41,3 +41,15 @@ function validateForm() {
     return false;
   }
 }
+const infoBtn = document.getElementById("info-btn");
+            const infoBox = document.getElementById("info-box");
+
+            infoBtn.addEventListener("click", () => {
+                infoBox.style.display = "block";
+            });
+
+            window.addEventListener("click", (event) => {
+                if (!event.target.matches("#info-btn")) {
+                    infoBox.style.display = "none";
+                }
+            });

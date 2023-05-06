@@ -10,8 +10,9 @@ $route_id = $_POST['route_id'];
 $user = $_SESSION['usernow'];
 $current_date = date("Y-m-d"); 
 $status = $_POST['status'];
-// Begin a transaction
-$conn->begin_transaction();
+
+// Begin a transaction with SERIALIZABLE isolation level
+$conn->begin_transaction(MYSQLI_TRANS_START_WITH_CONSISTENT_SNAPSHOT);
 
 if($status == 'false'){
    echo 'disable';
@@ -69,4 +70,5 @@ else {
 
 // Commit the transaction
 $conn->commit();
+
 ?>

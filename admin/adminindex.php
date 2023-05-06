@@ -16,11 +16,10 @@ include('../authentication/connection.php');
         <title>Responsive Admin Dashboard | Korsat X Parmaga</title>
 
         <!-- ======= Styles ====== -->
-        <link rel="stylesheet" href="../booking/booking.css">
+        <link rel="stylesheet" href="assets/css/style.css">
 
        <!-- =========== Scripts =========  -->
-        <script src="../booking/booking.js"></script>
-
+        
         <!-- ====== ionicons ======= -->
         <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
@@ -182,5 +181,7 @@ include('../authentication/connection.php');
                 </div>
             </div>
         </div>
+<script src="assets/js/main.js"></script>
+
    </body>
 </html>

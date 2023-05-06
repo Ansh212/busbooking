@@ -2,9 +2,9 @@
 <html lang="en">
    <head>
       <meta charset="UTF-8"/>
-      <meta name="viewport" content="width=device-width, intial-scale=1.0" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />
       <meta http-equiv="X-UA-Compatible" content="ie-edge" />
-      <link rel="stylesheet" href="signin/style.css" />
+            <link rel="stylesheet" href="signin/style.css" />
       <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.5/apexcharts.min.js"></script>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -18,8 +18,8 @@
             <div class="f1">
                <h1>Faculty Sign In</h1>
                <br><br>
-               <input type="text" id="user1" name="user1" placeholder="User Name" autocomplete="off" style="border-top-left-radius:0.375rem; border-top-right-radius:0.375rem"/>
-               <input type="password" id="pass1" name="pass1" placeholder="Password" style="border-bottom-left-radius:0.375rem; border-bottom-right-radius:0.375rem"/>
+               <input type="text" id="user1" name="user1" placeholder="Email: example@iiita.ac.in"  style="border-top-left-radius:0.375rem; border-top-right-radius:0.375rem"/>
+               <input type="password" id="pass1" name="pass1" placeholder="Password" autocomplete="off" style="border-bottom-left-radius:0.375rem; border-bottom-right-radius:0.375rem"/>
                <input type="hidden" id="role1" name="role1" value="faculty"/>
                <p style="color:red;" id="test1" ></p>
                <a href="faculty_forget/verify/verify.html">Forgot your password?</a>
@@ -31,8 +31,8 @@
             <div class="f1">
                <h1>Student Sign In</h1>
                <br><br>
-               <input type="text" id="user" name="user" placeholder="User Name" autocomplete="off" style="border-top-left-radius:0.375rem; border-top-right-radius:0.375rem"/>
-               <input type="password" id="pass" name="pass" placeholder="Password" style="border-bottom-left-radius:0.375rem; border-bottom-right-radius:0.375rem" />
+               <input type="text" id="user" name="user" placeholder="User Name"  style="border-top-left-radius:0.375rem; border-top-right-radius:0.375rem"/>
+               <input type="password" id="pass" name="pass" placeholder="Password" autocomplete="off" style="border-bottom-left-radius:0.375rem; border-bottom-right-radius:0.375rem" />
                <input type="hidden" id="role" name="role" value='student'/>
                <p style="color:red;" id="test"></p>
                <a href="forget_pass/verify/verify.html">Forgot your password?</a>

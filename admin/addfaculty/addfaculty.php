@@ -22,7 +22,6 @@ include('../../authentication/connection.php');
         <link rel="stylesheet" href="../assets/css/style.css">
 
        <!-- =========== Scripts =========  -->
-        <script src="../assets/js/main.js"></script>
 
 
         <!-- ====== ionicons ======= -->
@@ -110,7 +109,7 @@ include('../../authentication/connection.php');
                             <thead>
                                 <tr>
                                     <th>faculty Name</th>
-                                    <th>faculty ID</th>
+
                                     <th>email</th>
                                     <th>Delete</th>
                                 </tr>
@@ -125,7 +124,6 @@ include('../../authentication/connection.php');
                                     echo "<tr>";
                                     echo "<td>" . $row["name"] . "</td>";
                                     echo "<td>" . $row["faculty_id"] . "</td>";
-                                    echo "<td>" . $row["email"] . "</td>";
                                     echo "<td>
                                     <form action='addfaculty_delete.php' method='POST'>
                                     <input type='hidden' name='faculty_id' value='" . $row["faculty_id"] . "' id = 'faculty_id' >
@@ -144,4 +142,6 @@ include('../../authentication/connection.php');
             </div>
         </div>
    </body>
+        <script src="../assets/js/main.js"></script>
+
 </html>

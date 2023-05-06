@@ -112,10 +112,10 @@ $current_date = date("Y-m-d");
            
            
 if($role=='student'){
-    $sql = "SELECT student_ticket.date,student_ticket.bus_id, student_ticket.ticket_id, route.departure_src, route.departure_dst, route.source, route.destination FROM student_ticket INNER JOIN route ON student_ticket.route_id = route.route_id";
+    $sql = "SELECT student_ticket.date,student_ticket.bus_id, student_ticket.ticket_id, route.departure_src, route.departure_dst, route.source, route.destination FROM student_ticket INNER JOIN route ON student_ticket.route_id = route.route_id AND student_ticket.date='$current_date'";
 }
 else if($role=='faculty'){
-    $sql = "SELECT faculty_ticket.date,faculty_ticket.bus_id, faculty_ticket.date, faculty_ticket.ticket_id,route.departure_src, route.departure_dst, route.source, route.destination FROM faculty_ticket INNER JOIN route ON faculty_ticket.route_id = route.route_id";
+    $sql = "SELECT faculty_ticket.date,faculty_ticket.bus_id, faculty_ticket.date, faculty_ticket.ticket_id,route.departure_src, route.departure_dst, route.source, route.destination FROM faculty_ticket INNER JOIN route ON faculty_ticket.route_id = route.route_id AND faculty_ticket.date='$current_date'";
 }
             $result = $conn->query($sql);
 if ($result->num_rows > 0) {

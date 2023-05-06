@@ -9,16 +9,25 @@ signUpButton.addEventListener('click', () => {
 signInButton.addEventListener('click', () => {
 	container.classList.remove("right-panel-active");
 });
+
+
+
+function isValidEmail(email) {
+  // Check if the email ends with "iiita.ac.in"
+  if (email.endsWith("iiita.ac.in")) {
+    // Check if the email contains any numerical digits
+    const hasNumericDigits = /\d/.test(email);
+    return !hasNumericDigits;
+  }
+  return false;
+}
 function validateForm1() {
   
   let username = document.getElementById('user1').value;
   let password = document.getElementById('pass1').value;
   let role=document.getElementById('role1').value;
-  const usernameRegex = new RegExp(
-    /^[A-Za-z0-9_!#$%&'*+\/=?`{|}~^.-]+@iiita.ac.in/,
-    'gm'
-  );
-  if (username.length !=0 ) {
+  console.log(username); 
+  if (username.length!=0 && isValidEmail(username)) {
     if(password.length == 0){
       document.getElementById('test1').innerHTML = 'Enter Password';
       return false;
@@ -44,7 +53,7 @@ function sendData1(username, password, role) {
             pass:password,
             role:role
         },
-        success: function(data) {
+        success: function(data) { 
           data=data.trim();
           console.log(data);
           if(data === 'faculty' ){
@@ -69,6 +78,7 @@ function validateForm() {
     /^[A-Za-z0-9_!#$%&'*+\/=?`{|}~^.-]+@iiita.ac.in/,
     'gm'
   );
+  
   if (username.length == 10 || usernameRegex.test(username) || username == 'AdminAnsh') {
     if(password.length == 0){
       document.getElementById('test').innerHTML = 'Enter Password';

@@ -7,7 +7,7 @@ $pass = $_POST['pass'];
 $hashpass = md5($pass);
 
 
-$sql = "UPDATE faculty SET password='$hashpass' WHERE email='$email'";
+$sql = "UPDATE faculty SET password='$hashpass' WHERE faculty_id='$email'";
 $result = $conn->query($sql);
 
 $sql2 = "DELETE FROM register_token WHERE email = '$email'";

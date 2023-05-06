@@ -22,8 +22,7 @@ include('../../authentication/connection.php');
         <link rel="stylesheet" href="../assets/css/style.css">
 
        <!-- =========== Scripts =========  -->
-        <script src="../assets/js/main.js"></script>
-
+        
         <!-- ====== ionicons ======= -->
         <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
@@ -257,6 +256,7 @@ include('../../authentication/connection.php');
         });
     }
 </script>
+<script src="../assets/js/main.js"></script>
 
    </body>
 </html>

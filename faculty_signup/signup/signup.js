@@ -1,11 +1,10 @@
 function validateForm() {
   let name = document.forms['signup']['name'].value;
   let pass = document.forms['signup']['pass'].value;
-  let user = document.forms['signup']['pass'].value;
   let nerror =  document.getElementById('name-error');
   let perror =  document.getElementById('password-error');
   let cerror =  document.getElementById('confirm-error');
-  let uerror =  document.getElementById('user-error')
+ 
 
   let confirmpass = document.forms['signup']['repass'].value;
 
@@ -25,13 +24,7 @@ function validateForm() {
     document.getElementById('name-error').innerHTML = '';
   }
 
-  if(user.length==0){
-    uerror.removeAttribute('hidden');
-    document.getElementById('user-error').innerHTML = 'Enter your Faculty Id'
-  }
-  else{
-    document.getElementById('user-error').innerHTML = '';
-  }
+  
 
   if(uppercaseRegex.test(pass) && lowercaseRegex.test(pass) && symbolRegex.test(pass) &&
       numberRegex.test(pass) && pass.length >= 8){
@@ -51,3 +44,16 @@ function validateForm() {
     return false;
   }
 }
+
+const infoBtn = document.getElementById("info-btn");
+            const infoBox = document.getElementById("info-box");
+
+            infoBtn.addEventListener("click", () => {
+                infoBox.style.display = "block";
+            });
+
+            window.addEventListener("click", (event) => {
+                if (!event.target.matches("#info-btn")) {
+                    infoBox.style.display = "none";
+                }
+            });

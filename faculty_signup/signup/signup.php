@@ -16,7 +16,8 @@ $result = $conn->query($check_token);
       <meta name="viewport" content="width=device-width, intial-scale=1.0" />
       <meta http-equiv="X-UA-Compatible" content="ie-edge" />
       <link rel="stylesheet" href="signup.css" />
-      <script src="signup.js"></script>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
       <title>hello</title>
    </head>
 <?php 
@@ -37,10 +38,15 @@ if($result->num_rows === 1){
          <br>
          <input type="text" name="name" id="name"  placeholder="Full name" />
          <p style="color:red;" id="name-error" hidden></p>
-         <input type="text" name="user" id="user" placeholder="Faculty ID"/>
-         <p style="color:red;" id="user-error" hidden></p>
          <input type="text" name="email" id="email" value="<?php echo $email; ?>" disabled />
          <input type="password" name="pass" id="pass" placeholder="Password"/>
+<span class="material-symbols-outlined password-icon" id="info-btn">
+                        info
+                    </span>
+                    <div class="info-box" id="info-box">
+                        <p>Your password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character.</p>
+                    </div>
+
          <span style="color:red;" id="password-error" hidden></span>
          <input type="password" name="repass" id="repass" placeholder="Confirm password" />
          <span style="color:red;" id="confirm-error" hidden></span>             
@@ -58,6 +64,8 @@ if($result->num_rows === 1){
       </form>
       <br>
    </body>
+      <script src="signup.js"></script>
+
 </html>
 <?php    
 

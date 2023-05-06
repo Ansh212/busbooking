@@ -1,3 +1,12 @@
+function isValidEmail(email) {
+  // Check if the email ends with "iiita.ac.in"
+  if (email.endsWith("iiita.ac.in")) {
+    // Check if the email contains any numerical digits
+    const hasNumericDigits = /\d/.test(email);
+    return hasNumericDigits;
+  }
+  return false;
+}
 function validateEmail(str) {
   let button = document.getElementById('button');
   let test =  document.getElementById('test');
@@ -8,6 +17,13 @@ function validateEmail(str) {
      button.disabled = false;
     return;
   } 
+  if(!isValidEmail(str)){
+    test.removeAttribute('hidden');
+    document.getElementById('test').innerHTML = 'Invalide Email!';
+     button.disabled = false;
+    return;
+
+  }
   else {
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function () {

@@ -534,7 +534,7 @@ button.ghost {
   }
 }
 
-@media (max-width: 480px) {
+@media only screen and (max-width: 480px) {
   .cardBox {
     grid-template-columns: repeat(1, 1fr);
   }
@@ -555,6 +555,10 @@ button.ghost {
   }
   .toggle {
     z-index: 10001;
+  }
+  .main{
+    left:0;
+    width:100%;
   }
   .main.active .toggle {
     color: #fff;

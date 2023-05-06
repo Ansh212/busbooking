@@ -53,6 +53,30 @@ a {
 	margin: 15px 0;
 }
 
+.material-symbols-outlined {
+                font-variation-settings: "FILL" 0, "wght" 200, "GRAD" 0, "opsz" 48;
+            }
+
+            .info-box {
+                position: absolute;
+                left: 50%;
+                transform: translateX(-7%) translateY(55%);
+                background-color: #fff;
+                padding: 5px;
+                border: 1px solid #ddd;
+                box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+                display: none;
+            }
+            .password-input {
+                padding-right: 30px;
+                /* adjust this value to match the width of the icon */
+            }
+
+            .password-icon {
+                position: absolute;
+                left: 77%; /* adjust these values to position the icon where you want it */
+                transform: translateY(260%);
+            }
 .button {
 	border-radius: 20px;
 	border-color:#FFFFFF;

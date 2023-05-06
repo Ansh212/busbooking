@@ -1,4 +1,44 @@
+@media only screen and (max-width: 580px) {
+	.container{
+		width:90%;
+	}
+	.sign-in-container{
+		width:60%;
+	}
+	.sign-up-container{
+		width:60%;
+		left:11%;
+		
+	}
+	.overlay-container{
+		width:40%;
+		left:60%;
+		
+	}
+	.container.right-panel-active .sign-up-container{
+		transform:translateX(50%);
+	}
+	.container.right-panel-active .overlay-container{
+		transform:translateX(-150%);
+	}
+	.f1{
+		padding: 0px 20px;
+	}
+	h1 {
+		font-size: 20px;
+	}
 
+	p {
+		font-size: 10px;
+		line-height: 13px;
+		margin: 5px 0;
+	}
+
+	.button {
+		font-size: 8px;
+		padding: 10px 30px;
+	}
+}
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
 
 * {
@@ -38,12 +78,7 @@ p {
 }
 
 span {
-	font-size: 14px;
-	font-weight: 100;
-	line-height: 20px;
-	letter-spacing: 0.5px;
-	margin: 12px 0 12px;
-
+	font-size: 12px;
 }
 
 a {
@@ -82,37 +117,10 @@ a {
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
-	padding: 0px 50px;
+	padding: 0px 95px;
 	height: 100%;
 	text-align: center;
 }
-
-.material-symbols-outlined {
-                font-variation-settings: "FILL" 0, "wght" 200, "GRAD" 0, "opsz" 48;
-            }
-
-            .info-box {
-                position: absolute;
-                left: 10%;
-                transform: translateX(-7%) translateY(55%);
-                background-color: #fff;
-                padding: 5px;
-                border: 1px solid #ddd;
-                box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-                display: none;
-            }
-            .password-input {
-                padding-right: 30px;
-                /* adjust this value to match the width of the icon */
-            }
-
-            .password-icon {
-                position: absolute;
-                left: 77%; /* adjust these values to position the icon where you want it */
-                transform: translateY(-75%);
-            }
-
-
 
 input {
 	background-color: #ffffff;
@@ -165,9 +173,9 @@ table {
 			0 10px 10px rgba(0,0,0,0.22);
 	position: relative;
 	overflow: hidden;
-	width: 350px;
+	width: 870px;
 	max-width: 100%;
-	min-height: 250px;
+	min-height: 620px;
 }
 
 .form-container {
@@ -294,6 +302,109 @@ table {
 	width: 40px;
 }
 
+/* For tablets */
+@media only screen and (max-width: 1024px) {
+  .container {
+    width: 100%;
+    max-width: 100%;
+    min-height: auto;
+  }
+
+  .form-container {
+    position: static;
+    height: auto;
+  }
+
+  .sign-in-container,
+  .sign-up-container {
+    position: static;
+    width: 100%;
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+
+  .overlay-container {
+    position: static;
+    width: 100%;
+    height: auto;
+    transform: none;
+  }
+
+  .overlay {
+    left: 0;
+    width: 100%;
+    height: auto;
+    transform: none;
+  }
+
+  .overlay-left,
+  .overlay-right {
+    position: static;
+    transform: none;
+  }
+
+  .social-container {
+    margin: 10px 0;
+  }
+}
+@media screen and (max-width: 768px) {
+.container {
+width: 100%;
+border-radius: 0;
+box-shadow: none;
+}
+
+.form-container {
+position: relative;
+height: auto;
+}
+
+.sign-in-container,
+.sign-up-container {
+width: 100%;
+left: 0;
+transform: none;
+opacity: 1;
+}
+
+.container.right-panel-active .sign-in-container,
+.container.right-panel-active .sign-up-container {
+transform: none;
+}
+
+.overlay-container {
+position: relative;
+left: 0;
+width: 100%;
+transform: none;
+}
+
+.container.right-panel-active .overlay-container {
+transform: none;
+}
+
+.overlay {
+position: relative;
+left: 0;
+width: 100%;
+transform: none;
+}
+
+.overlay-panel {
+width: 100%;
+transform: none;
+}
+
+.overlay-left,
+.overlay-right {
+transform: none;
+}
+
+.social-container {
+margin: 20px auto;
+}
+}
 footer {
     background-color: #222;
     color: #fff;
@@ -318,3 +429,4 @@ footer a {
     color: #3c97bf;
     text-decoration: none;
 }
+

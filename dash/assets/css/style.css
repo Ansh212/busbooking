@@ -444,7 +444,7 @@ button.ghost {
 }
 
 /* ====================== Responsive Design ========================== */
-@media (max-width: 991px) {
+@media only screen and (max-width: 991px) and (min-width:769px){
   .navigation {
     left: -300px;
   }
@@ -463,7 +463,7 @@ button.ghost {
   }
 }
 
-@media (max-width: 768px) {
+@media only screen and (max-width: 768px) and (min-width:481px) {
   .details {
     grid-template-columns: 1fr;
   }
@@ -475,7 +475,8 @@ button.ghost {
   }
 }
 
-@media (max-width: 480px) {
+@media only screen and (max-width: 480px) {
+ 
   .cardBox {
     grid-template-columns: repeat(1, 1fr);
   }
@@ -496,6 +497,10 @@ button.ghost {
   }
   .toggle {
     z-index: 10001;
+  }
+  .main{
+    width:100%;
+    left:0;
   }
   .main.active .toggle {
     color: #fff;
