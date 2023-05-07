@@ -78,8 +78,8 @@ function validateForm() {
     /^[A-Za-z0-9_!#$%&'*+\/=?`{|}~^.-]+@iiita.ac.in/,
     'gm'
   );
-  
-  if (username.length == 10 || usernameRegex.test(username) || username == 'AdminAnsh') {
+  username=username.toLowerCase();
+  if (username.length == 10 || usernameRegex.test(username) || username == 'admin') {
     if(password.length == 0){
       document.getElementById('test').innerHTML = 'Enter Password';
       return false;

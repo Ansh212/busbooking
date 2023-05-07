@@ -35,9 +35,9 @@
                <input type="password" id="pass" name="pass" placeholder="Password" autocomplete="off" style="border-bottom-left-radius:0.375rem; border-bottom-right-radius:0.375rem" />
                <input type="hidden" id="role" name="role" value='student'/>
                <p style="color:red;" id="test"></p>
-               <a href="forget_pass/verify/verify.html">Forgot your password?</a>
+               <a href="student_forget/verify/verify.html">Forgot your password?</a>
                <input type="submit" id="btn" name="commit" value="Sign In" onclick="validateForm()" class="button"/>
-               <p>New ? <a href="register/verify/verify.html">Create an account</a></p>
+               <p>New ? <a href="student_signup/verify/verify.html">Create an account</a></p>
             </div>
          </div>
          <div class="overlay-container">

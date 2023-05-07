@@ -117,6 +117,7 @@ include('../../authentication/connection.php');
                             <thead>
                                 <tr>
                                     <th>Bus ID</th>
+                                    <th>Driver ID</th>
                                     <th>Bus Role</th>
                                     <th>Departure From Source</th>
                                     <th>Source</th>
@@ -129,13 +130,14 @@ include('../../authentication/connection.php');
                             </thead>
                             <tbody>
                                 <?php
-                                    $sql = "SELECT bus.bus_id,bus.role, route.departure_src,route.source, route.destination,route.departure_dst,bus.seats,bus.driver_id,bus.status FROM bus INNER JOIN route ON bus.route_id = route.route_id ";
+                                    $sql = "SELECT bus.driver_id,bus.bus_id,bus.role, route.departure_src,route.source, route.destination,route.departure_dst,bus.seats,bus.driver_id,bus.status FROM bus INNER JOIN route ON bus.route_id = route.route_id ";
                                     $result = $conn->query($sql);
                                     if ($result!=false && $result->num_rows > 0) {
                                     // Output data of each row
                                         while($row = $result->fetch_assoc()) {
                                             echo "<tr>";
                                             echo "<td>" . $row["bus_id"] . "</td>";
+                                            echo "<td>" . $row["driver_id"] . "</td>";
                                             echo "<td>" . $row["role"] . "</td>";
                                             echo "<td>" . $row["departure_src"] . "</td>";
                                             echo "<td>" . $row["source"] . "</td>";

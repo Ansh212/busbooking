@@ -17,7 +17,7 @@ function send_link($email){
   $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
   $mail->SMTPAuth = true;
   $mail->Username = 'iit2021158@iiita.ac.in';
-  $mail->Password = 'ansh@1234';
+  $mail->Password = '';
   $mail->setFrom('iit2021158@iiita.ac.in', 'Ansh Agrawal');
   $mail->addReplyTo('iit2021158@iiita.ac.in', 'Ansh Agrawal');
   $mail->addAddress($email);

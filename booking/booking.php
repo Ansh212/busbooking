@@ -143,7 +143,7 @@ $role= $_SESSION['role'];
                                     <input type='hidden' name='user' value='" . $row["seats"] . "'>
                                     <input type='hidden' name='route_id' id='route_id' value='" . $row["route_id"] . "'>
                                     <input type='hidden' name='status' id='status' value='" . $row["status"] . "'>
-                                    <input type='submit' value='Book' class='button' onclick='validateForm()' />
+                                    <input type='submit' value='Book' class='button' onclick='validateForm(this)' />
                                     </td>";
                                     echo "</tr>";
                                 }
@@ -158,10 +158,11 @@ $role= $_SESSION['role'];
             </div>
         </div>
 <script>
-    function validateForm() {
-        let bus = document.getElementById('bus_id').value;
-        let route = document.getElementById('route_id').value;
-        let status = document.getElementById('status').value; 
+    function validateForm(button) {
+        let bus = button.parentNode.querySelector("#bus_id").value;
+        let route =button.parentNode.querySelector("#route_id").value;
+        let status = button.parentNode.querySelector("#status").value;
+        console.log(bus);
         sendData(bus,route,status);
         return true;
     }  

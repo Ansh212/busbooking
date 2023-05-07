@@ -4,7 +4,7 @@
     session_start();
     $username = $_POST['user'];  
     $pass= $_POST['pass']; 
-    if($username!='AdminAnsh')$password =md5($pass);
+    if($username!='admin')$password =md5($pass);
     else $password=$pass; 
     $role = $_POST['role'];  
         //to prevent from mysqli injection  
@@ -43,7 +43,7 @@
             echo 'faculty';
             exit(); 
         }
-        else if($username=="AdminAnsh" AND $password=="ansh@2003"){
+        else if($username=="admin" AND $password=="admin@dbms21"){
             $_SESSION['usernow']=$username;
             $_SESSION['passnow']=$password;
             $_SESSION['displayname']='Ansh';

@@ -123,10 +123,8 @@ include('../../authentication/connection.php');
                                     echo "<td>" . $row["driver_id"] . "</td>";
                                     echo "<td>" . $row["phone"] . "</td>";
                                     echo "<td>
-                                    <form action='adddriver_delete.php' method='POST'>
                                     <input type='hidden' name='driver_id' value='" . $row["driver_id"] . "' id = 'driver_id' >
-                                    <button type='submit'>DELETE</button>
-                                    </form>                                    
+                                    <input type='submit' value='DELETE' class='btton' onclick='validateForm1(this)' />                  
                                     </td>";
                                     echo "</tr>";
                                 }
@@ -204,6 +202,37 @@ include('../../authentication/connection.php');
             }
         });
     }
+
+
+function validateForm1(button) {
+        let did = button.parentNode.querySelector("#driver_id").value;
+        sendData1(did);
+        return true;
+    }  
+
+    function sendData1(did) {
+        $.ajax({
+            type: "POST",
+            url: "adddriver_delete.php",
+            data: { 
+                driver_id:did
+            },
+            success: function(response) {
+                response=response.trim();
+                console.log(response);
+                if(response === 'driver_id'){
+                    $('#test').html('Driver is assinged to a bus at present,can not be deleted'); 
+                }
+                else if(response=='success'){
+                    window.location.href = 'adddriver.php';
+                }
+                else{
+                    $('#test').html('Error from server side,please try after some time');
+                }
+            }
+        });
+    }
+
 </script>
 <script src="../assets/js/main.js"></script>
 

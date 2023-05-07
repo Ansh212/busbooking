@@ -18,7 +18,7 @@ if($num1 > 0){
 $sql="insert into route values ('$rid','$src','$dest','$departure_src','$departure_dst')";
 $query =mysqli_query($conn,$sql);
 if($query){            
-    header("location: addroute.php");
+   echo 'success'; 
 }
 else{
     echo 'value exists';

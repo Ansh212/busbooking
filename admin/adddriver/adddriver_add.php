@@ -25,7 +25,7 @@ if($num2 > 0){
 $sql="INSERT INTO driver VALUES ('$did','$name','$phone')";
 $query =mysqli_query($conn,$sql);
 if($query){
-    header("Location: adddriver.php");
+    echo 'success'; 
 }
 else{
     echo 'Value exists';

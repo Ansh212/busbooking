@@ -131,10 +131,8 @@ include('../../authentication/connection.php');
                                     echo "<td>" . $row["departure_src"] . "</td>";
                                     echo "<td>" . $row["departure_dst"] . "</td>";
                                     echo "<td>
-                                    <form action='addroute_delete.php' method='POST'>
                                     <input type='hidden' name='route_id' value='" . $row["route_id"] . "' id = 'route_id' >
-                                    <button type='submit'>DELETE</button>
-                                    </form>                                    
+                                    <input type='submit' value='DELETE' class='btton' onclick='validateForm1(this)' /> 
                                     </td>";
                                     echo "</tr>";
                                 }
@@ -192,6 +190,10 @@ include('../../authentication/connection.php');
         let dep_src = document.getElementById('dep_src').value;
         let dep_dst = document.getElementById('dep_dst').value;
 
+        if(dep_src>=dep_dst){
+             document.getElementById('test').innerHTML = 'Source departure timing should be less than destination departure timing';
+return false;
+        }
         sendData(rid,src,dst,dep_src,dep_dst);
         return true;
     }  
@@ -212,6 +214,36 @@ include('../../authentication/connection.php');
                 console.log(response);
                 if(response === 'route_id'){
                     $('#test').html('Route ID is already present provide another ID'); 
+                } 
+                else if(response=='success'){
+                    window.location.href = 'addroute.php';
+                }
+                else{
+                    $('#test').html('Error from server side,please try after some time');
+                }
+            }
+        });
+    }
+
+    function validateForm1(button) {
+        let rid = button.parentNode.querySelector("#route_id").value;
+        
+        sendData1(rid);
+        return true;
+    }  
+
+    function sendData1(rid) {
+        $.ajax({
+            type: "POST",
+            url: "addroute_delete.php",
+            data: { 
+                route_id:rid
+            },
+            success: function(response) {
+                response=response.trim();
+                console.log(response);
+                if(response === 'route_id'){
+                    $('#test').html('Route ID is in use by buses,can not remove it'); 
                 } 
                 else if(response=='success'){
                     window.location.href = 'addroute.php';

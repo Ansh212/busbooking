@@ -26,7 +26,7 @@ $sql4="SELECT * FROM driver WHERE driver_id ='$did'";
 $query4=mysqli_query($conn,$sql4);
 $num4=mysqli_num_rows($query4);
 
-if($num2 >0 OR $query4 == 0){
+if($num2 >0 OR $num4 == 0){
     echo 'driver_id';
     exit();
 }

@@ -1,7 +1,7 @@
 <?php      
     $host = "localhost";  
     $user = "ansh";  
-    $password = 'Ansh@4321#@#';  
+    $password = '';  
     $db_name = "busbooking2";  
       
     $conn = mysqli_connect($host, $user, $password, $db_name);  
