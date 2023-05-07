@@ -80,7 +80,7 @@ $current_date = date("Y-m-d");
                 </li>
 
                 <li>
-                    <a href="#">
+                    <a href="../help/help.html">
                         <span class="icon">
                             <ion-icon name="help-outline"></ion-icon>
                         </span>

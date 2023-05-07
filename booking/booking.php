@@ -82,7 +82,7 @@ $role= $_SESSION['role'];
                     </li>
 
                     <li>
-                        <a href="#">
+                        <a href="../help/help.html">
                             <span class="icon">
                                 <ion-icon name="help-outline"></ion-icon>
                             </span>

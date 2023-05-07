@@ -40,7 +40,7 @@ $result3 = $conn->query($sql3);
 $sql1 = "DELETE FROM faculty_ticket WHERE date < '$one_week_ago'";
 $result1 = $conn->query($sql1);
 
-$sql2= "DELETE FROM register_token WHERE expirydate == '$current_date'";
+$sql2= "DELETE FROM register_token WHERE expirydate < '$current_date'";
 $result2 = $conn->query($sql2);
 
 mysqli_close($conn);
