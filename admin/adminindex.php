@@ -13,7 +13,7 @@ include('../authentication/connection.php');
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Responsive Admin Dashboard | Korsat X Parmaga</title>
+        <title>Admin</title>
 
         <!-- ======= Styles ====== -->
         <link rel="stylesheet" href="assets/css/style.css">
@@ -55,6 +55,15 @@ include('../authentication/connection.php');
                             <span class="title">Add Buses</span>
                         </a>
                     </li>
+                    <li>
+                        <a href="adddrives/adddrives.php">
+                            <span class="icon">
+                                <ion-icon name="speedometer-outline"></ion-icon>
+                            </span>
+                            <span class="title">Assign</span>
+                        </a>
+                    </li>
+
 
                     <li>
                         <a href="adddriver/adddriver.php">
@@ -126,7 +135,10 @@ include('../authentication/connection.php');
                         <tbody>
                             <?php
                            
-                                $sql = "SELECT bus.role,bus.route_id,bus.bus_id, route.departure_src,route.source, route.destination,route.departure_dst, bus.seats, bus.driver_id FROM bus INNER JOIN route ON bus.route_id = route.route_id";
+                                $sql = "SELECT b.bus_id, b.role, r.departure_src, r.source, r.destination, r.departure_dst, b.seats,d.driver_id
+                                    FROM bus AS b
+                                    JOIN drives AS d ON b.bus_id = d.bus_id
+                                    JOIN route AS r ON r.route_id = d.route_id;";
                             $result = $conn->query($sql);
                             if ($result!=false && $result->num_rows > 0) {
                             // Output data of each row
@@ -147,8 +159,8 @@ include('../authentication/connection.php');
                             }
                             ?>
                         </tbody>
-                    </table>
-                      <h1>Driver List</h1><br><br> 
+                    </table><br>
+                      <h1>Assinged Driver List</h1><br><br> 
                         <table class="content-table">
                             <thead>
                                 <tr>
@@ -160,7 +172,7 @@ include('../authentication/connection.php');
                             </thead>
                         <tbody>
                             <?php
-                            $sql = "SELECT driver.name, driver.driver_id, bus.bus_id ,driver.phone FROM bus INNER JOIN driver ON bus.driver_id = driver.driver_id";
+                            $sql = "SELECT driver.name, driver.driver_id, drives.bus_id ,driver.phone FROM drives INNER JOIN driver ON drives.driver_id = driver.driver_id";
                             $result = $conn->query($sql);
                             if ($result!=false && $result->num_rows > 0) {
                             // Output data of each row

@@ -35,7 +35,7 @@ if($result->num_rows === 1){
       <form name="signup" action = "save.php" onsubmit="return validateForm()" method = "POST" class="f1">
          <br>
          <h1>Register Form</h1>
-         <br>
+         <br><div>
          <input type="text" name="name" id="name"  placeholder="Full name" />
          <p style="color:red;" id="name-error" hidden></p>
          <input type="text" name="email" id="email" value="<?php echo $email; ?>" disabled />
@@ -50,7 +50,7 @@ if($result->num_rows === 1){
          <span style="color:red;" id="password-error" hidden></span>
          <input type="password" name="repass" id="repass" placeholder="Confirm password" />
          <span style="color:red;" id="confirm-error" hidden></span>             
-         <p style="color:red;" id="test" hidden></p>
+         <p style="color:red;" id="test" hidden></p></div>
          <input
             class="button"
             type="submit"

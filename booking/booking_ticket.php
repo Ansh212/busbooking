@@ -4,10 +4,9 @@ include('../authentication/connection.php');
 
 $role = $_SESSION['role'];
 $bus_id = $_POST['bus_id'];
-$ticket_id = uniqid();
-$booked_seats = 1;
-$route_id = $_POST['route_id'];
 $user = $_SESSION['usernow'];
+$ticket_id = md5($user);
+$booked_seats = 1;
 $current_date = date("Y-m-d"); 
 $status = $_POST['status'];
 
@@ -20,11 +19,7 @@ if($status == 'false'){
 }
 
 // Check if the user has already booked a ticket for the same date
-if($role == 'student') {
-    $check_sql = "SELECT * FROM student_ticket WHERE student_id='$user' AND date='$current_date'";
-} else if($role == 'faculty') {
-    $check_sql = "SELECT * FROM faculty_ticket WHERE faculty_id='$user' AND date='$current_date'";
-}
+$check_sql = "SELECT * FROM ticket WHERE id='$user' AND date='$current_date'";
 
 $check_result = $conn->query($check_sql);
 
@@ -46,13 +41,8 @@ else {
       $conn->query($sql2);
 
       // Insert the new ticket
-      if($role=='student'){
-        $sql3 = "INSERT INTO student_ticket (ticket_id,student_id,bus_id,route_id,date) VALUES ('$ticket_id','$user','$bus_id','$route_id','$current_date')";
-      } 
-      else if($role=='faculty'){
-         $sql3 = "INSERT INTO faculty_ticket (ticket_id,faculty_id,bus_id,route_id,date) VALUES ('$ticket_id','$user','$bus_id','$route_id','$current_date')";
-      }
-
+      $sql3 = "INSERT INTO ticket (ticket_id,id,bus_id,date) VALUES ('$ticket_id','$user','$bus_id','$current_date')";
+      
       if ($conn->query($sql3) === TRUE) {
         $_SESSION['ticket_id'] = $ticket_id;
         echo 'success'; 

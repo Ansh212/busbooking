@@ -14,7 +14,11 @@ console.log(confirmpass);
  
   if(uppercaseRegex.test(pass) && lowercaseRegex.test(pass) && symbolRegex.test(pass) &&
       numberRegex.test(pass) && pass.length >= 8){
+    document.getElementById('password-error').innerHTML = '';
+
     if(pass===confirmpass){
+      
+      document.getElementById('confirm-error').innerHTML = '';
       return true;
     }
     else{
@@ -26,6 +30,16 @@ console.log(confirmpass);
   else{
     perror.removeAttribute('hidden');
     document.getElementById('password-error').innerHTML = 'Password not strong enough';
+    if(pass===confirmpass){
+      
+      document.getElementById('confirm-error').innerHTML = '';
+      
+    }
+    else{
+      cerror.removeAttribute('hidden');
+      document.getElementById('confirm-error').innerHTML = 'Passwords do not match.';
+          }
+
     return false;
   }
 }

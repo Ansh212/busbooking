@@ -50,20 +50,34 @@ include('../../authentication/connection.php');
                             <span class="title">Dashboard</span>
                         </a>
                     </li>
+
+                    <li>
+                        <a href="../adddrives/adddrives.php">
+                            <span class="icon">
+                                <ion-icon name="speedometer-outline"></ion-icon>
+                            </span>
+                            <span class="title">Assign</span>
+                        </a>
+                    </li>
+
+
                     <li>
                         <a href="../adddriver/adddriver.php">
                             <span class="icon">
                                 <ion-icon name="person"></ion-icon>
                             </span>
-                            <span class="title">Edit Drivers</span>
+                            <span class="title">Add Drivers</span>
                         </a>
                     </li>                    
+
+                    
+
                     <li>
                         <a href="../addroute/addroute.php">
                             <span class="icon">
                                 <ion-icon name="location"></ion-icon>
                             </span>
-                            <span class="title">Edit Routes</span>
+                            <span class="title">Insert Routes</span>
                         </a>
                     </li>                   
                     <li>
@@ -117,12 +131,7 @@ include('../../authentication/connection.php');
                             <thead>
                                 <tr>
                                     <th>Bus ID</th>
-                                    <th>Driver ID</th>
                                     <th>Bus Role</th>
-                                    <th>Departure From Source</th>
-                                    <th>Source</th>
-                                    <th>Destination</th>
-                                    <th>Departure From Destination</th>
                                     <th>Seats</th>
                                     <th>Delete</th>
                                     <th>Disable</th>
@@ -130,25 +139,18 @@ include('../../authentication/connection.php');
                             </thead>
                             <tbody>
                                 <?php
-                                    $sql = "SELECT bus.driver_id,bus.bus_id,bus.role, route.departure_src,route.source, route.destination,route.departure_dst,bus.seats,bus.driver_id,bus.status FROM bus INNER JOIN route ON bus.route_id = route.route_id ";
+                                    $sql = "SELECT * FROM bus";
                                     $result = $conn->query($sql);
                                     if ($result!=false && $result->num_rows > 0) {
                                     // Output data of each row
                                         while($row = $result->fetch_assoc()) {
                                             echo "<tr>";
                                             echo "<td>" . $row["bus_id"] . "</td>";
-                                            echo "<td>" . $row["driver_id"] . "</td>";
                                             echo "<td>" . $row["role"] . "</td>";
-                                            echo "<td>" . $row["departure_src"] . "</td>";
-                                            echo "<td>" . $row["source"] . "</td>";
-                                            echo "<td>" . $row["destination"] . "</td>";
-                                            echo "<td>" . $row["departure_dst"] . "</td>";
                                             echo "<td>" . $row["seats"] . "</td>";
-                                            echo "<td>
-                                            <form action='addbus_delete.php' method='POST'>
+                                            echo "<td> 
                                             <input type='hidden' name='bus_id' value='" . $row["bus_id"] . "' id = 'bus_id' >
-                                            <button type='submit'>DELETE</button> 
-                                            </form>                                    
+                                            <input type='submit' value='DELETE' class='btton' onclick='validateForm1(this)' />                  
                                             </td>";
                                             if ($row["status"]=='true') {
                                                 echo "<td>
@@ -181,9 +183,7 @@ include('../../authentication/connection.php');
                                 <tr>
                                     <th>Bus ID</th>
                                     <th>Bus Role</th> 
-                                    <th>Route ID</th>
                                     <th>Seats</th>
-                                    <th>Driver ID</th>
                                     <th>Insert</th>
                                 </tr>
                             </thead>
@@ -196,14 +196,8 @@ include('../../authentication/connection.php');
                                         <input type="text" id="rol" name="rol" placeholder="Enter BUS Role" />
                                     </td>
                                     <td>
-                                        <input type="number" id="rid" name="rid" placeholder="Enter Route ID"/>
-                                    </td>
-                                    <td>
                                         <input type="number" id="seat" name="seat" placeholder="Enter Total Seats"/>
                                     </td>
-                                    <td>
-                                        <input type="number" id="did" name="did" placeholder="Enter Driver ID"/>
-                                    </td> 
                                     <td>
                                         <input type='submit' value='ADD' class='btton' onclick='validateForm()' /> 
                                     </td>
@@ -218,35 +212,25 @@ include('../../authentication/connection.php');
     function validateForm() {
         let bus_id = document.getElementById('bid').value;
         let role = document.getElementById('rol').value; 
-        let route_id = document.getElementById('rid').value;
         let seats = document.getElementById('seat').value;
-        let driver_id = document.getElementById('did').value;
-        sendData(bus_id,role,route_id,seats,driver_id);
+        sendData(bus_id,role,seats);
         return true;
     }  
 
-    function sendData(bus_id,role,route_id,seats,driver_id) {
+    function sendData(bus_id,role,seats) {
         $.ajax({
             type: "POST",
             url: "addbus_add.php",
             data: { 
                 bus_id:bus_id,
                 role:role,
-                route_id:route_id,
-                seats:seats,
-                driver_id:driver_id
+                seats:seats
             },
             success: function(response) {
                 response=response.trim();
                 console.log(response);
                 if(response === 'bus_id'){
                     $('#test').html('This Bus is already in use please give another ID'); 
-                }
-                else if(response === 'driver_id'){
-                    $('#test').html('Driver is already assinged to different bus please provide another driver or there is no driver with this ID'); 
-                }
-                else if(response === 'route_id'){
-                    $('#test').html('There is no route with this ID, please assign different ID to route'); 
                 }
                 else if(response=='success'){
                     window.location.href = 'addbus.php';
@@ -257,6 +241,36 @@ include('../../authentication/connection.php');
             }
         });
     }
+
+function validateForm1(button) {
+        let bid = button.parentNode.querySelector("#bus_id").value;
+        sendData1(bid);
+        return true;
+    }  
+
+    function sendData1(bid) {
+        $.ajax({
+            type: "POST",
+            url: "addbus_delete.php",
+            data: { 
+                bus_id:bid
+            },
+            success: function(response) {
+                response=response.trim();
+                console.log(response);
+                if(response === 'bus_id'){
+                    $('#test').html('Bus is in use at present,can not be deleted'); 
+                }
+                else if(response=='success'){
+                    window.location.href = 'addbus.php';
+                }
+                else{
+                    $('#test').html('Error from server side,please try after some time');
+                }
+            }
+        });
+    }
+
 </script>
 <script src="../assets/js/main.js"></script>
 

@@ -15,7 +15,7 @@ include('../../authentication/connection.php');
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Admin Delete</title>
+        <title>Admin</title>
         <!-- ======= Styles ====== -->
         <link rel="stylesheet" href="../assets/css/style.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -48,14 +48,26 @@ include('../../authentication/connection.php');
                             <span class="title">Dashboard</span>
                         </a>
                     </li>
+
+                    <li>
+                        <a href="../adddrives/adddrives.php">
+                            <span class="icon">
+                                <ion-icon name="speedometer-outline"></ion-icon>
+                            </span>
+                            <span class="title">Assign</span>
+                        </a>
+                    </li>
+
+
                     <li>
                         <a href="../addbus/addbus.php">
                             <span class="icon">
                                 <ion-icon name="bus"></ion-icon>
                             </span>
-                            <span class="title">Add Bus</span>
+                            <span class="title">Add Buses</span>
                         </a>
                     </li>
+
                     <li>
                         <a href="../addstudent/addstudent.php">
                             <span class="icon">
@@ -71,7 +83,8 @@ include('../../authentication/connection.php');
                             </span>
                             <span class="title">Insert Route</span>
                         </a>
-                    </li>                   
+                    </li>
+
                     <li>
                         <a href="../addfaculty/addfaculty.php">
                             <span class="icon">

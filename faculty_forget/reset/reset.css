@@ -94,7 +94,7 @@ a {
             .info-box {
                 position: absolute;
                 left: 10%;
-                transform: translateX(-7%) translateY(55%);
+                transform: translateX(-7%) translateY(-1%);
                 background-color: #fff;
                 padding: 5px;
                 border: 1px solid #ddd;
@@ -109,7 +109,7 @@ a {
             .password-icon {
                 position: absolute;
 				left:77%;
-                transform: translateY(-75%);
+                transform: translateY(-185%);
             }
 
 

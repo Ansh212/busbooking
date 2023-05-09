@@ -15,7 +15,7 @@ include('../../authentication/connection.php');
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Admin Delete</title>
+        <title>Admin</title>
    
         <!-- ======= Styles ====== -->
         <link rel="stylesheet" href="../assets/css/style.css">
@@ -55,16 +55,26 @@ include('../../authentication/connection.php');
                             <span class="icon">
                                 <ion-icon name="bus"></ion-icon>
                             </span>
-                            <span class="title">Edit Buses</span>
+                            <span class="title">Add Buses</span>
                         </a>
                     </li>
+
+                    <li>
+                        <a href="../adddrives/adddrives.php">
+                            <span class="icon">
+                                <ion-icon name="speedometer-outline"></ion-icon>
+                            </span>
+                            <span class="title">Assign</span>
+                        </a>
+                    </li>
+
 
                     <li>
                         <a href="../adddriver/adddriver.php">
                             <span class="icon">
                                 <ion-icon name="person"></ion-icon>
                             </span>
-                            <span class="title">Edit Drivers</span>
+                            <span class="title">Add Drivers</span>
                         </a>
                     </li>                
                     <li>
@@ -72,7 +82,7 @@ include('../../authentication/connection.php');
                             <span class="icon">
                                 <ion-icon name="location"></ion-icon>
                             </span>
-                            <span class="title">Edit Route</span>
+                            <span class="title">Insert Route</span>
                         </a>
                     </li>  
                     <li>
@@ -83,6 +93,8 @@ include('../../authentication/connection.php');
                             <span class="title">Edit Faculty</span>
                         </a>
                     </li>  
+                    <li>
+                   
                     <li>
                         <a href="../../logout/logout.php">
                             <span class="icon">

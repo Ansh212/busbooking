@@ -56,16 +56,26 @@ include('../../authentication/connection.php');
                             <span class="icon">
                                 <ion-icon name="bus"></ion-icon>
                             </span>
-                            <span class="title">Edit Buses</span>
+                            <span class="title">Add Buses</span>
                         </a>
                     </li>
+
+                    <li>
+                        <a href="../adddrives/adddrives.php">
+                            <span class="icon">
+                                <ion-icon name="speedometer-outline"></ion-icon>
+                            </span>
+                            <span class="title">Assign</span>
+                        </a>
+                    </li>
+
 
                     <li>
                         <a href="../adddriver/adddriver.php">
                             <span class="icon">
                                 <ion-icon name="person"></ion-icon>
                             </span>
-                            <span class="title">Edit Drivers</span>
+                            <span class="title">Add Drivers</span>
                         </a>
                     </li>                
                     <li>

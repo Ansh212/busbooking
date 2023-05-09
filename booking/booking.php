@@ -18,7 +18,7 @@ $role= $_SESSION['role'];
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Responsive Admin Dashboard | Korsat X Parmaga</title>
+        <title>Booking</title>
 
         <!-- ======= Styles ====== -->
         <link rel="stylesheet" href="booking.css">
@@ -126,7 +126,10 @@ $role= $_SESSION['role'];
                         <tbody>
                         <?php
                         session_start();
-                        $sql = "SELECT bus.status,bus.bus_id,route.route_id, route.departure_src,route.departure_dst,route.source, route.destination, bus.seats FROM bus INNER JOIN route ON bus.route_id = route.route_id WHERE bus.role='$role'";
+                        $sql = "SELECT b.bus_id, b.role, b.status,r.departure_src, r.source, r.destination, r.departure_dst, b.seats
+                                    FROM bus AS b
+                                    JOIN drives AS d ON b.bus_id = d.bus_id
+                                    JOIN route AS r ON r.route_id = d.route_id WHERE b.role='$role'";
                             $result = $conn->query($sql);
                             if ($result->num_rows > 0) {
                             // Output data of each row
@@ -141,7 +144,6 @@ $role= $_SESSION['role'];
                                     echo "<td>
                                     <input type='hidden' name='bus_id' id='bus_id' value='" . $row["bus_id"] . "'>
                                     <input type='hidden' name='user' value='" . $row["seats"] . "'>
-                                    <input type='hidden' name='route_id' id='route_id' value='" . $row["route_id"] . "'>
                                     <input type='hidden' name='status' id='status' value='" . $row["status"] . "'>
                                     <input type='submit' value='Book' class='button' onclick='validateForm(this)' />
                                     </td>";
@@ -160,20 +162,18 @@ $role= $_SESSION['role'];
 <script>
     function validateForm(button) {
         let bus = button.parentNode.querySelector("#bus_id").value;
-        let route =button.parentNode.querySelector("#route_id").value;
         let status = button.parentNode.querySelector("#status").value;
         console.log(bus);
-        sendData(bus,route,status);
+        sendData(bus,status);
         return true;
     }  
 
-    function sendData(bus, route,status) {
+    function sendData(bus,status) {
         $.ajax({
             type: "POST",
             url: "booking_ticket.php",
             data: { 
                 bus_id:bus,
-                route_id:route,
                 status:status
             },
             success: function(response) {

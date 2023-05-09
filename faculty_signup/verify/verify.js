@@ -18,7 +18,7 @@ function validateEmail(str) {
     document.getElementById('test').innerHTML = 'Enter your email!';
      button.disabled = false;
     return;
-  } 
+  }
   if(!isValidEmail(str)){
       test.removeAttribute('hidden');
     document.getElementById('test').innerHTML = 'Invalid Email!';

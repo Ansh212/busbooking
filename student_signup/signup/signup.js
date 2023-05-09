@@ -17,16 +17,19 @@ function validateForm() {
   if(name.length===0){
     nerror.removeAttribute('hidden');
     document.getElementById('name-error').innerHTML = 'Enter your name.';
-    return false;
+    
   }
   else{
     document.getElementById('name-error').innerHTML = '';
   }
 
+  
+
   if(uppercaseRegex.test(pass) && lowercaseRegex.test(pass) && symbolRegex.test(pass) &&
       numberRegex.test(pass) && pass.length >= 8){
-
+        document.getElementById('password-error').innerHTML = '';
     if(pass===confirmpass){
+      document.getElementById('confirm-error').innerHTML = '';
       return true;
     }
     else{
@@ -38,6 +41,15 @@ function validateForm() {
   else{
     perror.removeAttribute('hidden');
     document.getElementById('password-error').innerHTML = 'Password not strong enough';
+    if(pass===confirmpass){
+      document.getElementById('confirm-error').innerHTML = '';
+         }
+    else{
+      cerror.removeAttribute('hidden');
+      document.getElementById('confirm-error').innerHTML = 'Passwords do not match.';
+      
+    }
+
     return false;
   }
 }

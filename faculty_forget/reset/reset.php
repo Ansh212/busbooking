@@ -30,7 +30,7 @@
          <form name="reset" action = "save.php"  onsubmit="return validateForm()" method = "POST" class="f1">
             <br>
             <h1>Reset Password</h1>
-            <br>
+            <br><div>
             <input type="password" name="pass" id="pass" placeholder="password" style="border-top-left-radius:0.5rem;border-top-right-radius:0.5rem;"/>
             <span class="material-symbols-outlined password-icon" id="info-btn">
                         info
@@ -41,7 +41,7 @@
 
             <span style="color:red;" id="password-error" hidden></span>
             <input type="password" name="repass" id="repass" placeholder="confirm password" style="border-bottom-left-radius:0.5rem;border-bottom-right-radius:0.5rem;"/>
-            <span style="color:red;" id="confirm-error" hidden></span>
+            <span style="color:red;" id="confirm-error" hidden></span></div>
             <input
                class="button"
                type="submit"

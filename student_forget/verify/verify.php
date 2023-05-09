@@ -47,7 +47,7 @@ function send_link($email){
 
   }else{
 
-    $add_user = "INSERT INTO register_token (`email` , `token`, `expirydate`) VALUES ('$email', '$verification_token', '$expDate')";
+    $add_user = "INSERT INTO token (`email` , `token`, `expirydate`) VALUES ('$email', '$verification_token', '$expDate')";
     if($conn->query($add_user)){
       echo "Verification link sent!!";
     }else {

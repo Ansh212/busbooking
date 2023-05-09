@@ -3,7 +3,7 @@ session_start();
 include('../../authentication/connection.php');
 $temp=$_POST['route_id'];
 
-$sql2="SELECT * FROM bus WHERE route_id ='$temp'";
+$sql2="SELECT * FROM drives WHERE route_id ='$temp'";
 $query2=mysqli_query($conn,$sql2);
 $num2=mysqli_num_rows($query2);
 

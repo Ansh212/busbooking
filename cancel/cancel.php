@@ -7,7 +7,7 @@ if(!isset($_SESSION['loggedIn']) || !$_SESSION['loggedIn']) {
 
 require('../authentication/connection.php');
 $enroll = $_SESSION['displayname'];
-$usernow= $_SESSION['usernow'];
+$user= $_SESSION['usernow'];
 $role = $_SESSION['role'];
 $current_date = date("Y-m-d"); 
 
@@ -19,7 +19,7 @@ $current_date = date("Y-m-d");
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Responsive Admin Dashboard | Korsat X Parmaga</title>
+    <title>Cancel</title>
 
     <!-- ======= Styles ====== -->
     <link rel="stylesheet" href="cancel.css">
@@ -112,12 +112,11 @@ $current_date = date("Y-m-d");
             <?php
              
            
-if($role=='student'){
-$sql = "SELECT student_ticket.date,student_ticket.bus_id, student_ticket.date, student_ticket.ticket_id,route.departure_src, route.departure_dst, route.source, route.destination FROM student_ticket INNER JOIN route ON student_ticket.route_id = route.route_id AND student_ticket.date='$current_date'";
-}
-else if($role=='faculty'){
-$sql = "SELECT faculty_ticket.date,faculty_ticket.bus_id, faculty_ticket.date, faculty_ticket.ticket_id,route.departure_src, route.departure_dst, route.source, route.destination FROM faculty_ticket INNER JOIN route ON faculty_ticket.route_id = route.route_id AND faculty_ticket.date='$current_date'";
-}
+ $sql = "SELECT t.date, t.bus_id, t.ticket_id, r.departure_src, r.departure_dst, r.source, r.destination
+FROM ticket t
+JOIN drives d ON t.bus_id = d.bus_id
+JOIN route r ON r.route_id = d.route_id
+WHERE t.date = '$current_date' AND t.id='$user'";
             $result = $conn->query($sql);
 
             if ($result->num_rows > 0) {
