@@ -193,7 +193,11 @@ include('../../authentication/connection.php');
                                         <input type="number" id="bid" name="bid" placeholder="Enter BUS ID" />
                                     </td>
                                     <td>
-                                        <input type="text" id="rol" name="rol" placeholder="Enter BUS Role" />
+                                         <select id="rol" name="rol" style="width: 200px;">
+                                         <option value="">Select Role</option>
+                                         <option value="faculty">Faculty</option>
+                                         <option value="student">Student</option>
+                                         </select>
                                     </td>
                                     <td>
                                         <input type="number" id="seat" name="seat" placeholder="Enter Total Seats"/>
@@ -213,8 +217,15 @@ include('../../authentication/connection.php');
         let bus_id = document.getElementById('bid').value;
         let role = document.getElementById('rol').value; 
         let seats = document.getElementById('seat').value;
-        sendData(bus_id,role,seats);
-        return true;
+        if(role=='faculty' || role=='student'){
+            sendData(bus_id,role,seats);
+            return true;
+        }
+        else{
+            document.getElementById('test').innerHTML='Please select role';
+            return false;
+        }
+        
     }  
 
     function sendData(bus_id,role,seats) {

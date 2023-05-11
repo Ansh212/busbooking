@@ -14,10 +14,9 @@ if($num2>0){
 
 $sql="DELETE FROM bus WHERE bus_id='$temp'";
 if ($conn->query($sql) === TRUE) {
-    echo "<p>Deleting successful!</p>";
-    header("location:addbus.php"); 
+    echo "success"; 
 } else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
+    echo "Error: ";
 }
 
 ?>

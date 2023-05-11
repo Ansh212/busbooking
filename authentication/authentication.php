@@ -1,7 +1,7 @@
 <?php
     
-    include('connection.php'); 
-    session_start();
+include('connection.php');
+session_start();
     $username = $_POST['user'];  
     $pass= $_POST['pass']; 
     if($username!='admin')$password =md5($pass);

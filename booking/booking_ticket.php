@@ -5,10 +5,11 @@ include('../authentication/connection.php');
 $role = $_SESSION['role'];
 $bus_id = $_POST['bus_id'];
 $user = $_SESSION['usernow'];
-$ticket_id = md5($user);
 $booked_seats = 1;
-$current_date = date("Y-m-d"); 
+$current_date = date("Y-m-d");
 $status = $_POST['status'];
+$hello = $user . '-' . $current_date;
+$ticket_id = md5($user . '-' . $current_date);
 
 // Begin a transaction with SERIALIZABLE isolation level
 $conn->begin_transaction(MYSQLI_TRANS_START_WITH_CONSISTENT_SNAPSHOT);

@@ -27,7 +27,7 @@ $sql3 = "DELETE FROM ticket WHERE date < '$one_week_ago'";
 $result3 = $conn->query($sql3);
 
 
-$sql2= "DELETE FROM register_token WHERE expirydate < '$current_date'";
+$sql2= "DELETE FROM token WHERE expirydate < '$current_date'";
 $result2 = $conn->query($sql2);
 
 mysqli_close($conn);

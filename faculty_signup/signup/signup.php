@@ -5,7 +5,7 @@ $email = $_GET['email'];
 $token = $_GET['token'];
 $currentDate = date("Y-m-d H:i:s");
 
-$check_token = "SELECT * FROM register_token WHERE email = '$email' AND token = '$token' ";
+$check_token = "SELECT * FROM token WHERE email = '$email' AND token = '$token' ";
 $result = $conn->query($check_token);
 
 ?>
@@ -18,7 +18,7 @@ $result = $conn->query($check_token);
       <link rel="stylesheet" href="signup.css" />
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
-      <title>hello</title>
+      <title>Signup</title>
    </head>
 <?php 
 

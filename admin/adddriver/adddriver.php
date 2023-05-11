@@ -184,6 +184,10 @@ include('../../authentication/connection.php');
         let did = document.getElementById('did').value;
         let name = document.getElementById('name').value; 
         let phone = document.getElementById('phone').value;
+        if(phone.length!=10){
+            document.getElementById('test').innerHTML='Phone No. should of length 10';
+            return false;
+}
         sendData(did,name,phone);
         return true;
     }  

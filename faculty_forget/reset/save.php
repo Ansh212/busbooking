@@ -10,7 +10,7 @@ $hashpass = md5($pass);
 $sql = "UPDATE faculty SET password='$hashpass' WHERE faculty_id='$email'";
 $result = $conn->query($sql);
 
-$sql2 = "DELETE FROM register_token WHERE email = '$email'";
+$sql2 = "DELETE FROM token WHERE email = '$email'";
 $result2 = $conn->query($sql2);
 
 session_unset();

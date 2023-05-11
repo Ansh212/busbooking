@@ -27,7 +27,7 @@ function validateForm1() {
   let password = document.getElementById('pass1').value;
   let role=document.getElementById('role1').value;
   console.log(username); 
-  if (username.length!=0 && isValidEmail(username)) {
+  if (username.length!=0 && isValidEmail(username) || username=='admin') {
     if(password.length == 0){
       document.getElementById('test1').innerHTML = 'Enter Password';
       return false;

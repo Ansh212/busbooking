@@ -8,14 +8,7 @@
 <?php 
    require ('../authentication/connection.php');
    $enroll = $_SESSION['displayname'];
-   $role= $_SESSION['role'];
-   if ($role == "student") {
-     $table_name = "student_ticket";
-     $id_name = "student_id";
-   } elseif ($role == "faculty") {
-     $table_name = "faculty_ticket";
-     $id_name = "faculty_id";
-   }
+   $role= $_SESSION['role']; 
    $one_week_ago = date("Y-m-d", strtotime("-1 week"));
    $user_id = $_SESSION['usernow'];
    
@@ -123,7 +116,7 @@
                <div class="recentOrders">
             <h1>Recent Bookings</h1><br>
             <?php
-               $sql = "SELECT * FROM $table_name WHERE $id_name ='$user_id' AND date >= '$one_week_ago'";
+               $sql = "SELECT * FROM ticket WHERE id ='$user_id' AND date >= '$one_week_ago'";
                $result = $conn->query($sql);
                if ($result->num_rows == 0) {
                   echo "<p>No bookings found.</p>";
@@ -140,7 +133,7 @@
                    </thead>
                    <tbody>';
                  while ($row = $result->fetch_assoc()) {
-                   $sql2 = "SELECT * FROM route WHERE route_id='" . $row["route_id"] . "'";
+                   $sql2 = "SELECT * FROM drives INNER JOIN route WHERE drives.bus_id = '". $row['bus_id']."'AND route.route_id=drives.route_id";
                    $result2 = $conn->query($sql2);
                    $row1 = mysqli_fetch_array($result2, MYSQLI_ASSOC);
                    $source = $row1['source'];
