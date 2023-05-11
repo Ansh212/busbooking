@@ -95,8 +95,8 @@
          </div>
          <!-- ======================= Cards ================== -->
          <?php
-            // Assuming you have already established a database connection
-            $query = "SELECT COUNT(*) FROM bus WHERE role='$role'";
+            // Assuming you have already establ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ished a database connection
+            $query = "SELECT COUNT(*) FROM bus NATURAL JOIN drives WHERE bus.bus_id=drives.bus_id AND bus.role='$role'";
             $result = mysqli_query($conn, $query);
             $count = mysqli_fetch_array($result)[0];
             ?>
@@ -133,7 +133,7 @@
                    </thead>
                    <tbody>';
                  while ($row = $result->fetch_assoc()) {
-                   $sql2 = "SELECT * FROM drives INNER JOIN route WHERE drives.bus_id = '". $row['bus_id']."'AND route.route_id=drives.route_id";
+                   $sql2 = "SELECT * FROM drives NATURAL JOIN route WHERE drives.bus_id = '". $row['bus_id']."'AND route.route_id=drives.route_id";
                    $result2 = $conn->query($sql2);
                    $row1 = mysqli_fetch_array($result2, MYSQLI_ASSOC);
                    $source = $row1['source'];

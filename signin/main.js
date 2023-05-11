@@ -103,7 +103,7 @@ function sendData(username, password, role) {
         url: "../authentication/authentication.php",
         data: { 
             user:username,
-            pass: password,
+            pass:password,
             role:role
         },
         success: function(response) {
